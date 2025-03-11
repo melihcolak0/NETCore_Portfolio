@@ -26,7 +26,7 @@ namespace _61MY_NETCoreMVC.Areas.UserPanel.Controllers
             ViewBag.v = value.Name + " " + value.Surname;
 
             // Weather API
-            string api = "586668271128d0124bd8783b1253de87";
+            string api = "your_api";
             string connection = "https://api.openweathermap.org/data/2.5/weather?q=istanbul&mode=xml&lang=tr&units=metric&appid=" + api;
             XDocument document = XDocument.Load(connection);
             ViewBag.v5 = document.Descendants("temperature").ElementAt(0).Attribute("value").Value;
