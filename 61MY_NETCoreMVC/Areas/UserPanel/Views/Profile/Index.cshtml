@@ -1,0 +1,78 @@
+﻿@model _61MY_NETCoreMVC.Areas.UserPanel.Models.UserProfileEditViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Profil Bilgilerini Düzenle</h4>                    
+            <form action="/UserPanel/Profile/Index" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>Adınız</label>
+                    <input type="text" asp-for="Name" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Soyadınız</label>
+                    <input type="text" asp-for="Surname" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Şifreniz</label>
+                    <input type="password" asp-for="Password" class="form-control" placeholder="Şifreniz" />
+                </div>
+                <div class="form-group">
+                    <label>Şifreniz Tekrar</label>
+                    <input type="password" asp-for="PasswordConfirm" class="form-control" placeholder="Şifreniz Tekrar" />
+                </div>
+                <div class="form-group">
+                    <label>Dosya Yükle</label>
+                    <input type="file" asp-for="Image" class="form-control" />
+                     @* <div class="input-group col-xs-12">
+                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                        <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                        </span>
+                    </div> *@
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">Güncelle</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+@* Action, Controller ve Area belirtmediğimizde bu kod çalıştı.
+
+
+
+            @using (Html.BeginForm(FormMethod.Post, true, new { enctype = "multipart/form-data" }))
+            {
+                <div class="form-group">
+                    @Html.Label("Adınız")
+                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control",})
+                </div>
+                <div class="form-group">
+                    @Html.Label("Soyadınız")
+                    @Html.TextBoxFor(x => x.Surname, new { @class = "form-control"})
+                </div>
+                <div class="form-group">
+                    @Html.Label("Şifreniz")
+                    @Html.TextBox("Password", "", new { @class = "form-control", type = "password", placeholder = "Şifrenizi girin" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Şifreniz Tekrar")
+                    @Html.TextBox("Password", "", new { @class = "form-control", type = "password", placeholder = "Şifrenizi girin" })
+                </div>
+                <div class="form-group">
+                    <label>Dosya Yükle</label>
+                    <input type="file" asp-for="Image">
+                    <div class="input-group col-xs-12">
+                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                        <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                        </span>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">Güncelle</button>
+            }    *@ 

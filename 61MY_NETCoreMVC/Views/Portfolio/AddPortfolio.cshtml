@@ -1,0 +1,145 @@
+﻿@model EntityLayer.Concrete.Portfolio
+@{
+    ViewData["Title"] = "AddPortfolio";
+    Layout = "~/Views/Shared/_AdminLayout2.cshtml";
+}
+<div class="page-header">
+    <h3 class="page-title"> @ViewBag.v1 </h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@ViewBag.v4">@ViewBag.v2</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@ViewBag.v3</li>
+        </ol>
+    </nav>
+</div>
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            @using (Html.BeginForm("AddPortfolio", "Portfolio", FormMethod.Post, new { @class = "form-group" }))
+            {
+                <div class="form-group">
+                    @Html.Label("Proje")
+                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control", onfocus = "this.style.color='#a3b3a2'", onblur = "this.style.color='white'" })
+                    @Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Görsel 1")
+                    @Html.TextBoxFor(x => x.ImageUrl, new { @class = "form-control", onfocus = "this.style.color='#a3b3a2'", onblur = "this.style.color='white'" })
+                    @Html.ValidationMessageFor(x => x.ImageUrl, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Görsel 2")
+                    @Html.TextBoxFor(x => x.ImageUrl2, new { @class = "form-control", onfocus = "this.style.color='#a3b3a2'", onblur = "this.style.color='white'" })
+                    @Html.ValidationMessageFor(x => x.ImageUrl2, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Proje URL")
+                    @Html.TextBoxFor(x => x.ProjectUrl, new { @class = "form-control", onfocus = "this.style.color='#a3b3a2'", onblur = "this.style.color='white'" })
+                    @Html.ValidationMessageFor(x => x.ProjectUrl, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Resim 1")
+                    @Html.TextBoxFor(x => x.Image1, new { @class = "form-control", onfocus = "this.style.color='#a3b3a2'", onblur = "this.style.color='white'" })
+                    @Html.ValidationMessageFor(x => x.Image1, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Resim 2")
+                    @Html.TextBoxFor(x => x.Image2, new { @class = "form-control", onfocus = "this.style.color='#a3b3a2'", onblur = "this.style.color='white'" })
+                    @Html.ValidationMessageFor(x => x.Image2, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Resim 3")
+                    @Html.TextBoxFor(x => x.Image3, new { @class = "form-control", onfocus = "this.style.color='#a3b3a2'", onblur = "this.style.color='white'" })
+                    @Html.ValidationMessageFor(x => x.Image3, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Resim 4")
+                    @Html.TextBoxFor(x => x.Image4, new { @class = "form-control", onfocus = "this.style.color='#a3b3a2'", onblur = "this.style.color='white'" })
+                    @Html.ValidationMessageFor(x => x.Image4, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Platform URL")
+                    @Html.TextBoxFor(x => x.Platform, new { @class = "form-control", onfocus = "this.style.color='#a3b3a2'", onblur = "this.style.color='white'" })
+                    @Html.ValidationMessageFor(x => x.Platform, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Ücret")
+                    @Html.TextBoxFor(x => x.Price, new { @class = "form-control", onfocus = "this.style.color='#a3b3a2'", onblur = "this.style.color='white'" })
+                    @Html.ValidationMessageFor(x => x.Price, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Oran")
+                    @Html.TextBoxFor(x => x.Rate, new { @class = "form-control", onfocus = "this.style.color='#a3b3a2'", onblur = "this.style.color='white'" })
+                    @Html.ValidationMessageFor(x => x.Rate, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Durum")
+                    @Html.TextBoxFor(x => x.Status, new { @class = "form-control", onfocus = "this.style.color='#a3b3a2'", onblur = "this.style.color='white'" })
+                    @Html.ValidationMessageFor(x => x.Status, "", new { @class = "text-danger" })
+                </div>
+                <button class="btn btn-primary">Kaydet</button>
+            }
+        </div>
+    </div>
+</div>
+
+<script src="/corona-free-dark-bootstrap-admin-template-master/template/assets/vendors/js/vendor.bundle.base.js"></script>
+
+
+@* <div class="card-header border-0">
+    <h3 class="mb-0">Proje Ekleme Sayfası</h3>
+</div>
+<br />
+@using (Html.BeginForm("AddPortfolio", "Portfolio", FormMethod.Post))
+{
+    @Html.Label("Proje")
+    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-danger" })
+    <br />
+    @Html.Label("Görsel 1")
+    @Html.TextBoxFor(x => x.ImageUrl, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.ImageUrl, "", new { @class = "text-danger" })
+    <br />
+    @Html.Label("Görsel 2")
+    @Html.TextBoxFor(x => x.ImageUrl2, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.ImageUrl2, "", new { @class = "text-danger" })
+    <br />
+    @Html.Label("Proje URL")
+    @Html.TextBoxFor(x => x.ProjectUrl, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.ProjectUrl, "", new { @class = "text-danger" })
+    <br />
+    @Html.Label("Resim 1")
+    @Html.TextBoxFor(x => x.Image1, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Image1, "", new { @class = "text-danger" })
+    <br />
+    @Html.Label("Resim 2")
+    @Html.TextBoxFor(x => x.Image2, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Image2, "", new { @class = "text-danger" })
+    <br />
+    @Html.Label("Resim 3")
+    @Html.TextBoxFor(x => x.Image3, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Image3, "", new { @class = "text-danger" })
+    <br />
+    @Html.Label("Resim 4")
+    @Html.TextBoxFor(x => x.Image4, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Image4, "", new { @class = "text-danger" })
+    <br />
+    @Html.Label("Platform URL")
+    @Html.TextBoxFor(x => x.Platform, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Platform, "", new { @class = "text-danger" })
+    <br />
+    @Html.Label("Ücret")
+    @Html.TextBoxFor(x => x.Price, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Price, "", new { @class = "text-danger" })
+    <br />
+    @Html.Label("Oran")
+    @Html.TextBoxFor(x => x.Rate, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Rate, "", new { @class = "text-danger" })
+    <br />
+    @Html.Label("Durum")
+    @Html.TextBoxFor(x => x.Status, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Status, "", new { @class = "text-danger" })
+    <br />
+    <button class="btn btn-info">Kaydet</button>
+} *@
+

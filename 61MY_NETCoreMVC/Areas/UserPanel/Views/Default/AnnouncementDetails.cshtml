@@ -1,0 +1,24 @@
+﻿@model EntityLayer.Concrete.Announcement
+
+@{
+    ViewData["Title"] = "AnnouncementDetails";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">@Model.Title</h4>
+            <p class="card-description">
+                @Model.Status - @Model.Date.ToString("dd MMM yyyy - HH:mm")
+            </p>
+            @using (Html.BeginForm("AnnouncementDetails", "Default", FormMethod.Get, new { @class = "form-sample" }))
+            {
+                <div class="form-group">
+                    @Html.TextAreaFor(x => x.Content, 10, 10, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            }
+            <a href="/UserPanel/Default/Index" class="btn btn-primary">Tüm Duyurular'a Dön</a>
+        </div>
+    </div>
+</div>

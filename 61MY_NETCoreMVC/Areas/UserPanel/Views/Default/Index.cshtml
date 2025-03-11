@@ -1,0 +1,64 @@
+﻿
+@using EntityLayer.Concrete
+@model List<Announcement>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+@{string color = "";}
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Duyurular</h4>            
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Başlık</th>
+                            <th>İçerik</th>
+                            <th>Tarih</th>
+                            <th>Tür</th>
+                            <th>Detaylar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var x in Model)
+                        {
+                            if (x.Status == "Yeni Yazı")
+                            {
+                                color = "badge badge-danger";
+                            }
+                            else if (x.Status == "Yeni Video")
+                            {
+                                color = "badge badge-warning";
+                            }
+                            else if (x.Status == "Yeni Eğitim")
+                            {
+                                color = "badge badge-success";
+                            }
+                            else if (x.Status == "Konfreans")
+                            {
+                                color = "badge badge-info";
+                            }
+                            else
+                            {
+                                color = "badge badge-success";
+                            }
+                            <tr>
+                                <td>@x.Id</td>
+                                <td>@x.Title</td>
+                                <td>@(string.IsNullOrEmpty(x.Content) ? x.Content : (x.Content.Length <= 30 ? x.Content : x.Content.Substring(0, 30) + "..."))</td>
+                                <td>@x.Date.ToString("dd MMM yyyy - HH:mm")</td>
+                                <td><label class="@color">@x.Status</label></td>
+                                <td><a href="/UserPanel/Default/AnnouncementDetails/@x.Id" class="btn btn-primary">Detayları Gör</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

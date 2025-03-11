@@ -1,0 +1,144 @@
+﻿@using EntityLayer.Concrete
+@model List<Experience>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout2.cshtml";
+}
+<div class="row">
+    <div class="col-lg-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <h3 class="text-center">Deneyim Listesi</h3>
+                    <div class="p-2" id="listexperiences">
+
+                    </div>
+                    <button type="button" id="btngetlistall" class="btn btn-outline-primary">Verileri Getir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="text-center">Deneyim Ekleme</h3>
+                <br />
+                <input type="text" class="form-control" id="inpname" placeholder="Deneyim" onfocus="this.style.color='#a3b3a2'" onblur="this.style.color='white'" />
+                <br />
+                <input type="text" class="form-control" id="inpdate" placeholder="Tarih" onfocus="this.style.color='#a3b3a2'" onblur="this.style.color='white'" />
+                <br />
+                <button type="button" id="btnadd" class="btn btn-outline-info">Kaydet</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="text-center">Id'ye Göre Getirme</h3>
+                <br />
+                <input type="text" class="form-control" id="inpid" placeholder="Id Giriniz" onfocus="this.style.color='#a3b3a2'" onblur="this.style.color='white'" />
+                <br />
+                <button type="button" id="btnid" class="btn btn-outline-warning">Id'ye Göre Getir</button>
+                <div class="p-2" id="listexperiencesbyid">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="text-center">Deneyim Silme</h3>
+                <br />
+                <input type="text" class="form-control" id="inpexpid" placeholder="Id Giriniz" onfocus="this.style.color='#a3b3a2'" onblur="this.style.color='white'" />
+                <br />
+                <button type="button" id="btndelete" class="btn btn-outline-danger">Sil</button>                
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Düzenlenmiş Kod*@
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#btngetlistall").click(function () {
+                $.ajax({
+                    contentType: "application/json",
+                    dataType: "json",
+                    type: "GET",
+                    url: "/ExperienceController2/ListExperience",
+
+                    success: function(func) {
+                        let values = jQuery.parseJSON(func);
+                        console.log(values);
+
+                        let htmlst = "<table class=table table-bordered> <tr> <th> ID </th> <th> Başlık </th> <th> Tarih </th> </tr>";
+                        $.each(values, (index, value) =>  {
+                            htmlst += `<tr> <td>${value.ExperienceId}</td> <td>${value.Name}</td> <td>${value.Date}</td> </tr>`
+                        });
+                        htmlst += "</table>";
+                        $("#listexperiences").html(htmlst);
+                    },
+                    error: function(xhr, status, error) {
+                        console.log("Hata oluştu: ", error);
+                    }
+                });
+            });
+
+            $("#btnadd").click(function(){
+                let values = {
+                    Name: $("#inpname").val(),
+                    Date: $("#inpdate").val()
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: "/ExperienceController2/AddExperience",
+                    data: values,
+                    success: function(func2){
+                    let result = jQuery.parseJSON(func2);
+                    alert(result.Name + " Başarılı bir şekilde eklendi");
+                    },
+                    error: function(xhr, status, error) {
+                        console.log("Hata oluştu: ", error);
+                    }
+                });
+            });
+
+            $("#btnid").click(x => {
+                let id = $("#inpid").val();
+
+                $.ajax({
+                    contentType: "application/json",
+                    dataType: "json",
+                    type: "GET",
+                    url: "/ExperienceController2/GetExpById",
+                    data: {ExperienceId: id},
+                    success: function(func3){
+                        let result = jQuery.parseJSON(func3);
+                        console.log(func3);
+                        let htmlst = `<table class=table table-bordered> <tr> <th> Deneyim Id </th> <td> ${result.ExperienceId} </td></tr> <tr> <th> Deneyim </th> <td> ${result.Name} </td> </tr> </table>`;
+                        $("#listexperiencesbyid").html(htmlst);
+                    }
+                });
+            });
+
+            $("#btndelete").click(x => {
+                let id = $("#inpexpid").val();
+                $.ajax({
+                    contentType: "application/json",
+                    dataType: "json",
+                    type: "POST",
+                    url: "/ExperienceController2/DeleteExperience/" + id,
+                    success: function(func4){
+                        console.log(func4);
+                    }
+                });
+            });
+        });
+    </script>
+}
+<script src="~/lib/jquery/dist/jquery.js"></script>
+

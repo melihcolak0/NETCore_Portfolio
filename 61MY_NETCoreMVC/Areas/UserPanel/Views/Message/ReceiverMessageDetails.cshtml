@@ -1,0 +1,22 @@
+﻿@model EntityLayer.Concrete.WriterMessage
+@{
+    ViewData["Title"] = "ReceiverMessageDetails";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">@Model.Subject</h4>
+            <p class="card-description">
+                Gönderen: @Model.SenderName (@Model.Sender) - Tarih: @Model.Date.ToString("dd MMM yyyy - HH:mm")
+            </p>
+            @using (Html.BeginForm("ReceiverMessageDetails", "Message", FormMethod.Get, new { @class = "form-sample" }))
+            {
+                <div class="form-group">
+                    @Html.TextAreaFor(x => x.MessageContent, 10, 10, new { @class = "form-control"})
+                </div>
+            }
+            <a href="/UserPanel/Message/ReceiverMessage" class="btn btn-primary">Gelen Mesajlar'a Dön</a>
+        </div>
+    </div>
+</div>

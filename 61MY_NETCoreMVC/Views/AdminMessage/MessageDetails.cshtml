@@ -1,0 +1,59 @@
+﻿@model EntityLayer.Concrete.WriterMessage
+@{
+    ViewData["Title"] = "MessageDetails";
+    Layout = "~/Views/Shared/_AdminLayout2.cshtml";
+}
+<div class="page-header">
+    <h3 class="page-title"> @ViewBag.v1 </h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@ViewBag.v4">@ViewBag.v2</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@ViewBag.v3</li>
+        </ol>
+    </nav>
+</div>
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            @using (Html.BeginForm("MessageDetails", "AdminMessage", FormMethod.Get, new { @class = "form-group" }))
+            {
+                <div class="form-group">
+                    @Html.Label("Id")
+                    @Html.TextBoxFor(x => x.WriterMessageId, new { @class = "form-control", @readonly = "readonly", style = "background-color: #7d827d;" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Gönderen")
+                    @Html.TextBoxFor(x => x.SenderName, new { @class = "form-control", onfocus = "this.style.color='#a3b3a2'", onblur = "this.style.color='white'" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Gönderen Mail")
+                    @Html.TextBoxFor(x => x.Sender, new { @class = "form-control", onfocus = "this.style.color='#a3b3a2'", onblur = "this.style.color='white'" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Alıcı")
+                    @Html.TextBoxFor(x => x.ReceiverName, new { @class = "form-control", onfocus = "this.style.color='#a3b3a2'", onblur = "this.style.color='white'" })
+                </div>                
+                <div class="form-group">
+                    @Html.Label("Alıcı Mail")
+                    @Html.TextBoxFor(x => x.Receiver, new { @class = "form-control", onfocus = "this.style.color='#a3b3a2'", onblur = "this.style.color='white'" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Konu")
+                    @Html.TextBoxFor(x => x.Subject, new { @class = "form-control", onfocus = "this.style.color='#a3b3a2'", onblur = "this.style.color='white'" })
+                </div>                
+                <div class="form-group">
+                    @Html.Label("Tarih")
+                    @Html.TextBoxFor(x => x.Date, new { @class = "form-control", onfocus = "this.style.color='#a3b3a2'", onblur = "this.style.color='white'" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Mesaj")
+                    @Html.TextAreaFor(x => x.MessageContent, new { @class = "form-control", style = "height: 150px;", onfocus = "this.style.color='#a3b3a2'", onblur = "this.style.color='white'" })
+                </div>
+                <a class="btn btn-outline-secondary" href="/AdminMessage/Inbox">Gelen Mesajlara Dön</a>                
+                <a class="btn btn-outline-primary" href="/AdminMessage/Sendbox" style="margin-left: 15px;">Gönderilen Mesajlara Dön</a>
+            }
+        </div>
+    </div>
+</div>
+
+<script src="/corona-free-dark-bootstrap-admin-template-master/template/assets/vendors/js/vendor.bundle.base.js"></script>

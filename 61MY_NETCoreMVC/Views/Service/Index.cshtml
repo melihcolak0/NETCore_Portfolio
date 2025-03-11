@@ -1,0 +1,89 @@
+﻿@using EntityLayer.Concrete
+@model List<Service>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout2.cshtml";
+}
+<div class="page-header">
+    <h3 class="page-title"> @ViewBag.v1 </h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@ViewBag.v4">@ViewBag.v2</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@ViewBag.v3</li>
+        </ol>
+    </nav>
+</div>
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Başlık</th>
+                            <th>Resim URL</th>
+                            <th>Sil</th>
+                            <th>Güncelle</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var x in Model)
+                        {
+                            <tr>
+                                <td>@x.ServiceId</td>
+                                <td>@x.Title</td>
+                                <td>@x.ImageUrl</td>
+                                <td><a href="/Service/DeleteService/@x.ServiceId" class="btn btn-outline-danger">Sil</a></td>
+                                <td><a href="/Service/UpdateService/@x.ServiceId" class="btn btn-outline-info">Güncelle</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<a href="/Service/AddService" class="btn btn-outline-primary">Yeni Hizmet Ekle</a>
+
+
+
+
+@* <div class="card-header border-0">
+    <h3 class="mb-0">Hizmetlerim'in Listelenmesi</h3>
+</div>
+<div class="table-responsive">
+    <table class="table align-items-center table-flush">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col" class="sort" data-sort="name">#</th>
+                <th scope="col" class="sort" data-sort="budget">BAŞLIK</th>
+                <th scope="col" class="sort" data-sort="status">RESİM URL</th>
+                <th scope="col">SİL</th>
+                <th scope="col" class="sort" data-sort="completion">DÜZENLE</th>
+            </tr>
+        </thead>
+        <tbody class="list">
+            @foreach (var x in Model)
+            {
+                <tr>
+                    <th>
+                        @x.ServiceId
+                    </th>
+                    <td class="budget">
+                        @x.Title
+                    </td>
+                    <td>
+                        @x.ImageUrl
+                    </td>
+                    <td><a href="/Service/DeleteService/@x.ServiceId" class="btn btn-danger">Sil</a></td>
+                    <td><a href="/Service/UpdateService/@x.ServiceId" class="btn btn-info">Güncelle</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a href="/Service/AddService" class="btn btn-primary">Yeni Hizmet Ekle</a>
+</div>
+------------------------------------------------------------------------------------------------- *@
+

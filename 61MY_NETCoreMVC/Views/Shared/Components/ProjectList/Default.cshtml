@@ -1,0 +1,48 @@
+﻿
+@using EntityLayer.Concrete
+@model List<Portfolio>
+<div class="row ">
+    <div class="col-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Projeler</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    #
+                                </th>
+                                <th> Proje Adı </th>
+                                <th> Proje URL </th>
+                                <th> Fiyat </th>                                
+                                <th> Oran </th>                                
+                                <th> Durum </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var x in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @x.PortfolioId
+                                    </td>
+                                    <td>
+                                        <img src="@x.Platform" alt="image" />
+                                        <span class="ps-2">@x.Name</span>
+                                    </td>
+                                    <td> @x.ProjectUrl </td>
+                                    <td> @x.Price </td>
+                                    <td> @x.Rate% </td>                                                                      
+                                    <td>
+                                        <div class="badge badge-outline-success">Tamamlandı</div>
+                                    </td>
+                                </tr>
+                            }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

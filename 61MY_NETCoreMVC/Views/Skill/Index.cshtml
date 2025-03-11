@@ -1,0 +1,98 @@
+﻿@using EntityLayer.Concrete
+@model List<Skill>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout2.cshtml";
+}
+<div class="page-header">
+    <h3 class="page-title"> @ViewBag.v1 </h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@ViewBag.v4">@ViewBag.v2</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@ViewBag.v3</li>
+        </ol>
+    </nav>
+</div>
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">           
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Başlık</th>
+                            <th>Oran</th>
+                            <th>Durum</th>
+                            <th>Sil</th>
+                            <th>Güncelle</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var x in Model)
+                        {
+                            <tr>
+                                <td>@x.SkillId</td>
+                                <td>@x.Title</td>
+                                <td>@x.Value</td>
+                                <td><label class="badge badge-outline-success">Aktif</label></td>
+                                <td><a href="/Skill/DeleteSkill/@x.SkillId" class="btn btn-outline-danger">Sil</a></td>
+                                <td><a href="/Skill/UpdateSkill/@x.SkillId" class="btn btn-outline-warning">Güncelle</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<a href="/Skill/AddSkill" class="btn btn-outline-primary">Yeni Yetenek Ekle</a>
+
+<script src="/corona-free-dark-bootstrap-admin-template-master/template/assets/vendors/js/vendor.bundle.base.js"></script>
+
+@* ----- Eski Admin Teması -----
+
+<div class="card-header border-0">
+    <h3 class="mb-0">Yetenklerim'in Listelenmesi</h3>
+</div>
+<div class="table-responsive">
+    <table class="table align-items-center table-flush">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col" class="sort" data-sort="name">#</th>
+                <th scope="col" class="sort" data-sort="budget">BAŞLIK</th>
+                <th scope="col" class="sort" data-sort="status">ORAN</th>
+                <th scope="col">SİL</th>
+                <th scope="col" class="sort" data-sort="completion">DÜZENLE</th>                
+            </tr>
+        </thead>
+        <tbody class="list">
+            @foreach (var x in Model)
+            {
+                <tr>
+                    <th>
+                        @x.SkillId
+                    </th>
+                    <td class="budget">
+                        @x.Title
+                    </td>                    
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <span class="completion mr-2">@x.Value%</span>
+                            <div>
+                                <div class="progress">
+                                    <div class="progress-bar bg-success" role="progressbar" aria-valuenow="@x.Value" aria-valuemin="0" aria-valuemax="100" style="width: @x.Value%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td><a href="/Skill/DeleteSkill/@x.SkillId" class="btn btn-danger">Sil</a></td>
+                    <td><a href="/Skill/UpdateSkill/@x.SkillId" class="btn btn-info">Güncelle</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a href="/Skill/AddSkill" class="btn btn-primary">Yeni Yetenek Ekle</a>    
+</div> *@

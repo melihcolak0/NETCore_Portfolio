@@ -1,0 +1,72 @@
+﻿@using EntityLayer.Concrete
+@model List<WriterUser>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout2.cshtml";
+}
+
+<div class="col-lg-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <button type="button" id="getlistall" class="btn btn-outline-primary">Verileri Getir</button>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h3 class="text-center">Kullanıcı Listesi</h3>
+            <div class="p-2" id="listusers">
+                buraya veriler gelecek.
+            </div>
+        </div>
+    </div>
+</div>
+@*Düzenlenmiş Kod*@
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#getlistall").click(function () {
+                $.ajax({
+                    contentType: "application/json",
+                    dataType: "json",
+                    type: "GET",
+                    url: "/WriterUser/ListUser/",
+
+                    success: function(func) {
+                        let users = jQuery.parseJSON(func);
+                        console.log(users);
+                    },
+                    error: function(xhr, status, error) {
+                        console.log("Hata oluştu: ", error);
+                    }
+                });
+            });
+        });
+    </script>
+}
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+
+@* ------ Murat Hoca'nın Yazdığı İlk Kod ------
+@section Scripts
+{
+    <script>
+        $("#getlistall").click(function(){
+            $.ajax({
+                contentType: "application/json",
+                dataType: "json",
+                type: "Get",
+                url: "/WriterUser/ListUser/",
+
+                success: function(func){
+                    let users = jQuery.parseJSON(func);
+                    console.log(users);
+                }
+            });
+        });
+    </script>
+} *@

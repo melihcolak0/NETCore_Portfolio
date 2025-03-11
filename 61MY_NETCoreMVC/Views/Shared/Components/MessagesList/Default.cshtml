@@ -1,0 +1,29 @@
+﻿@using EntityLayer.Concrete
+@model List<Message>
+<div class="col-md-6 col-xl-4 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <div class="d-flex flex-row justify-content-between">
+                <h4 class="card-title">Mesajlar</h4>
+                <p class="text-muted mb-1 small">Tümünü Görüntüle</p>
+            </div>
+            <div class="preview-list">
+                @foreach (var x in Model)
+                {
+                    <div class="preview-item border-bottom">                        
+                        <div class="preview-item-content d-flex flex-grow">
+                            <div class="flex-grow">
+                                <div class="d-flex d-md-block d-xl-flex justify-content-between">
+                                    <h6 class="preview-subject">@x.Name</h6>
+                                    <p class="text-muted text-small">@x.Date.ToString("dd MMMM yy - HH:mm")</p>
+                                </div>
+                                <p class="text-muted">@(string.IsNullOrEmpty(x.Content) ? x.Content : (x.Content.Length <= 35 ? x.Content : x.Content.Substring(0, 35) + "..."))</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

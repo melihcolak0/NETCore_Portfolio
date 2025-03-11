@@ -1,0 +1,44 @@
+﻿@using EntityLayer.Concrete
+@model List<Announcement>
+@{
+    string color = "";
+}
+<div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+    <p class="mb-0 font-weight-normal float-left dropdown-header">Duyurular</p>
+    @foreach (var x in Model)
+    {
+        if (x.Status == "Yeni Yazı")
+        {
+            color = "preview-icon bg-danger";
+        }
+        else if (x.Status == "Yeni Video")
+        {
+            color = "preview-icon bg-warning";
+        }
+        else if (x.Status == "Yeni Eğitim")
+        {
+            color = "preview-icon bg-success";
+        }
+        else if (x.Status == "Konfreans")
+        {
+            color = "preview-icon bg-primary";
+        }
+        else
+        {
+            color = "preview-icon bg-info";
+        }
+        <a class="dropdown-item preview-item" href="/UserPanel/Default/AnnouncementDetails/@x.Id">
+            <div class="preview-thumbnail">
+                <div class="@color">
+                    <i class="ti-info-alt mx-0"></i>
+                </div>
+            </div>
+            <div class="preview-item-content">
+                <h6 class="preview-subject font-weight-normal">@x.Title</h6>
+                <p class="font-weight-light small-text mb-0 text-muted">
+                    @x.Status - @x.Date.ToShortDateString()
+                </p>
+            </div>
+        </a>
+    }   
+</div>

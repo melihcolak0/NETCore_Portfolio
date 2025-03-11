@@ -1,0 +1,52 @@
+﻿@using EntityLayer.Concrete
+@model List<Experience>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout2.cshtml";
+}
+<div class="page-header">
+    <h3 class="page-title"> @ViewBag.v1 </h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@ViewBag.v4">@ViewBag.v2</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@ViewBag.v3</li>
+        </ol>
+    </nav>
+</div>
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Başlık</th>
+                            <th>Tarih</th>
+                            <th>Açıklama</th>
+                            <th>Sil</th>
+                            <th>Güncelle</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var x in Model)
+                        {
+                            <tr>
+                                <td>@x.ExperienceId</td>
+                                <td>@x.Name</td>
+                                <td>@x.Date</td>
+                                <td>@(string.IsNullOrEmpty(x.Description) ? x.Description : (x.Description.Length <= 20 ? x.Description : x.Description.Substring(0, 20) + "..."))</td>
+                                <td><a href="/Experience/DeleteExperience/@x.ExperienceId" class="btn btn-outline-danger">Sil</a></td>
+                                <td><a href="/Experience/UpdateExperience/@x.ExperienceId" class="btn btn-outline-info">Güncelle</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<a href="/Experience/AddExperience" class="btn btn-outline-success">Yeni Deneyim Ekle</a>
+
+<script src="/corona-free-dark-bootstrap-admin-template-master/template/assets/vendors/js/vendor.bundle.base.js"></script>

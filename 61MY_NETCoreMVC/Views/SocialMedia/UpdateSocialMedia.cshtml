@@ -1,0 +1,41 @@
+﻿@model EntityLayer.Concrete.SocialMedia
+@{
+    ViewData["Title"] = "UpdateSocialMedia";
+    Layout = "~/Views/Shared/_AdminLayout2.cshtml";
+}
+<div class="page-header">
+    <h3 class="page-title"> @ViewBag.v1 </h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@ViewBag.v4">@ViewBag.v2</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@ViewBag.v3</li>
+        </ol>
+    </nav>
+</div>
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            @using (Html.BeginForm("UpdateSocialMedia", "SocialMedia", FormMethod.Post, new { @class = "form-group" }))
+            {
+                <div class="form-group">
+                    @Html.Label("Id")
+                    @Html.TextBoxFor(x => x.SocialMediaId, new { @class = "form-control", @readonly = "readonly", style = "background-color: #7d827d;" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Sosyal Medya")
+                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control", onfocus = "this.style.color='#a3b3a2'", onblur = "this.style.color='white'" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("URL")
+                    @Html.TextBoxFor(x => x.Url, new { @class = "form-control", onfocus = "this.style.color='#a3b3a2'", onblur = "this.style.color='white'" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("İkon URL")
+                    @Html.TextBoxFor(x => x.Icon, new { @class = "form-control", onfocus = "this.style.color='#a3b3a2'", onblur = "this.style.color='white'" })
+                </div>                
+                <button class="btn btn-primary">Kaydet</button>
+            }
+        </div>
+    </div>
+</div>
+<script src="/corona-free-dark-bootstrap-admin-template-master/template/assets/vendors/js/vendor.bundle.base.js"></script>

@@ -1,0 +1,45 @@
+﻿@model EntityLayer.Concrete.Message
+@{
+    ViewData["Title"] = "ContactDetails";
+    Layout = "~/Views/Shared/_AdminLayout2.cshtml";
+}
+<div class="page-header">
+    <h3 class="page-title"> @ViewBag.v1 </h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@ViewBag.v4">@ViewBag.v2</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@ViewBag.v3</li>
+        </ol>
+    </nav>
+</div>
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            @using (Html.BeginForm("ContactDetails", "Contact", FormMethod.Get, new { @class = "form-group" }))
+            {
+                <div class="form-group">
+                    @Html.Label("Id")
+                    @Html.TextBoxFor(x => x.MessageId, new { @class = "form-control", @readonly = "readonly", style = "background-color: #7d827d;" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Gönderen")
+                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control", onfocus = "this.style.color='#a3b3a2'", onblur = "this.style.color='white'" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Gönderen Mail")
+                    @Html.TextBoxFor(x => x.Mail, new { @class = "form-control", onfocus = "this.style.color='#a3b3a2'", onblur = "this.style.color='white'" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Tarih")
+                    @Html.TextBoxFor(x => x.Date, new { @class = "form-control", onfocus = "this.style.color='#a3b3a2'", onblur = "this.style.color='white'" })
+                </div>                
+                <div class="form-group">
+                    @Html.Label("Mesaj")
+                    @Html.TextAreaFor(x => x.Content, new { @class = "form-control", style = "height: 150px;", onfocus = "this.style.color='#a3b3a2'", onblur = "this.style.color='white'" })
+                </div>
+                <a class="btn btn-outline-info" href="/Contact/Index">Tüm Mesajlara Dön</a>
+            }
+        </div>
+    </div>
+</div>
+
