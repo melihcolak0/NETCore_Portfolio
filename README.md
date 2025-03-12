@@ -1,4 +1,4 @@
-# :gem:.NET Core ile Admin ve Kullanıcı Panelli Portföy Sitesi
+# :gem:ASP.NET Core ile Admin ve Kullanıcı Panelli Portföy Sitesi
 Bu repository, Murat Yücedağ'ın Udemy'de bulunan Asp.Net Core 5.0 ile Adım Adım Web Geliştirme kursunu içermektedir. Bu eğitimde bana yol gösteren Murat Yücedağ'a çok teşekkür ederim.
 
 ASP.NET Core Web Application (.NET Core Framework) kullanarak dinamik bir Portföy sitesi oluşturdum. Bu projede N-Tier Architecture (N Katmanlı Mimari) ve MVC tabanlı bir yapı kullandım. SOLID prensiplerine ve dosya organizasyonuna uygun şekilde geliştirme yaparak kod tekrarını en aza indirmeye çalıştım. Entity Framework Core - Code First yaklaşımını kullanarak veritabanı bağlantılarını oluşturdum.
